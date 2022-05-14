@@ -36,7 +36,7 @@ bot.on("text", async (ctx) => {
   const isBannedWord = validator.includesBannedWord(message);
   if (isBannedWord) {
     await ctx.deleteMessage();
-    await ctx.reply(messages.bannedWordWarning);
+    await ctx.reply(messages.warning);
   }
 });
 
@@ -64,11 +64,6 @@ bot.action(/captcha:.*/, async (ctx) => {
 
   const data = ctx.callbackQuery?.data;
   const { member, captcha } = ctx.session;
-
-  // // @ts-ignore
-  // const text = ctx.callbackQuery.message?.text;
-  // // @ts-ignore
-  // const reply_markup = ctx.callbackQuery.message?.reply_markup;
 
   const isCaptchaConfirmed = captcha?.value?.data === data;
   if (!isCaptchaConfirmed) {

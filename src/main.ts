@@ -1,4 +1,5 @@
 import "module-alias/register";
+import config from "./config/config.json";
 
 import dotenv from "dotenv";
 import fastify from "fastify";
@@ -6,10 +7,7 @@ import nconf from "nconf";
 import path from "path";
 
 dotenv.config();
-nconf
-  .argv()
-  .env()
-  .file({ file: path.join(__dirname, "./../config.json") });
+nconf.argv().file({ file: path.join(__dirname, "./config/config.json") });
 
 import { Update } from "typegram";
 import { bot } from "./bot";

@@ -1,0 +1,28 @@
+{
+  "bot": {
+    "messages": {
+      "welcome": "Welcome to the group!",
+      "warning": "These words are banned. Next time We'll block you."
+    },
+
+    "antispam": {
+      "words": [
+        "shit",
+        "Gourmet Deliveries",
+        "Just Provisioning",
+        "Green Chilli",
+        "Green Chili",
+        "Le Coin des Chefs",
+        "Ocean Pantry",
+        "Maison del Gusto",
+        "All Services",
+        "Mansueto",
+        "Turnaround",
+        "Spirit Services",
+        "Froggy",
+        "Froggy Gourmet",
+        "We Supply Yachts"
+      ]
+    }
+  }
+}

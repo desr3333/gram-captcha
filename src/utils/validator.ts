@@ -1,15 +1,20 @@
 import nconf from "nconf";
 
-const botConfig = nconf.get("bot");
+const { antispam } = nconf.get("bot");
 
 export const includesBannedWord = (message: string) => {
   try {
-    const bannedWords: string[] = botConfig.bannedWords;
     const text = message?.toLowerCase();
-    const words: string[] = bannedWords?.map((v) => v?.toLowerCase());
+    const words: string[] = antispam.words?.map((v: string) =>
+      v?.toLowerCase()
+    );
 
-    const isBannedWord = words.includes(text) || words.includes(`@${text}`);
-    if (isBannedWord) return true;
+    const isBanned =
+      words.includes(text) ||
+      words.includes(text.replace("@", "").split(" ").join("")) ||
+      words.filter((w) => text.indexOf(w) >= 0).some((w) => w);
+
+    if (isBanned) return true;
 
     return false;
   } catch (e) {
